@@ -7,7 +7,7 @@ Version 0.1 has only metafeatures for regression tasks.
 To install PyMeta, first you need to clone the project from GitHub.
 
 ```sh
-git clone https://github.com/romulomadu/pymeta.git
+git clone https://github.com/victorcaet/pymeta.git
 ```
 
 Go to project folder:
