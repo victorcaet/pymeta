@@ -198,11 +198,61 @@ def coeficient_of_variation_target(y: numpy.array) -> float:
 
     return numpy.std(y) / numpy.mean(y)
 
-#TODO
-# def sparsity_of_target(y: numpy.array) -> int:
-#     '''Sparsity of the target. (Coeficient of variation of the target discretized into three values).'''
-#     pass
+### GINI
+def gini(y: numpy.array) -> float:
+    '''
+    Gini coefficient. It can be used as a sparsity metric
+    Gini can only be calculated for positive (non-zero) arrays
 
+    Parameters
+    ----------    
+    y : numpy.array
+        Array of response values.
+
+    Return
+    ------
+    float:
+        Gini coefficient of y.
+    '''
+    y[y<= 0] = 1e-12
+    n = len(y)
+    i = numpy.arange(1, y.shape[0] + 1)
+    return (numpy.sum(((2 * i) - n) * y) / (n * numpy.sum(y)))
+
+def hoyer_sparsity_of_target(y: numpy.array) -> float:
+    '''
+    Hoyer measure of sparsity (according to Hurley, N. and Rickard, S.at "Comparing measures of sparsity")
+
+    Parameters
+    ----------    
+    y : numpy.array
+        Array of response values.
+
+    Return
+    ------
+    float:
+        Hoyer measure of sparsity of y.
+    '''
+    sqrt_n = numpy.sqrt(len(y))
+    return (sqrt_n - (numpy.sum(y)/numpy.linalg.norm(y)) / (sqrt_n - 1))
+
+# #TODO
+# def sparsity_of_target(y: numpy.array) -> int:
+#     '''
+#     Sparsity of the target. (Coeficient of variation of the target discretized into three values).
+    
+#     Parameters
+#     ----------    
+#     y : numpy.array
+#         Array of response values.
+
+#     Return
+#     ------
+#     float:
+#         ???.
+    
+#     '''
+#     pass
 
 def outliers_on_target(y: numpy.array) -> int:
     '''

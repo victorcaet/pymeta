@@ -451,11 +451,3 @@ def proportion_of_correlated_features(X: numpy.array, y: numpy.array=None, metho
     is_corr = numpy.abs(correlation_matrix[ids]) > coef
     
     return is_corr.sum() / X.shape[1]
-
-
-
-
-    
-
-
-

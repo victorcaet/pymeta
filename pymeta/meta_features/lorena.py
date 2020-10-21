@@ -829,5 +829,3 @@ def t2(X: numpy.array, y: numpy.array=None) -> float:
     """
 
     return example_features_ratio(X, y)
-
-
